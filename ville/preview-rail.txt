@@ -1,0 +1,4 @@
+RAIL PREVIEW — x-money | visa | interac | ach | cash
+Lecture seule. Pas d'émission.
+Triggered by unforge-check #10 merge.
+0 data/. 0 slug. Carl. NE MERGE PAS.
