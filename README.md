@@ -1,32 +1,32 @@
 # RECU
 
-A signed receipt. Not money.
+Un reçu signé. Pas d'argent.
 
-This rail is a signed receipt. Not money. Not a quantum coin. FAMILLE attests. It does not hold funds.
+Ce rail est un reçu signé. Pas d'argent. Pas de quantum coin. FAMILLE atteste. Elle ne tient pas les fonds.
 
-Rails named only: `x-money | visa | interac | ach | cash | autre`.
+Rails nommés seulement : `x-money | visa | interac | ach | cash | autre`.
 
-X Money (2026, US Premium, Visa + Cross River FDIC) is a rail we can *name*. We cannot operate it. We cannot patch X.
+X Money (2026, US Premium, Visa + Cross River FDIC) est un rail qu'on peut *nommer*. On ne l'opère pas. On ne patche pas X.
 
-Attestation ≠ balance. A sealed card is not a QUANTUM seal. Keys stay off Git.
+Attestation ≠ solde. Une carte scellée n'est pas un sceau QUANTUM. Les clés restent hors Git.
 
-## Verified vs assumed
+## Vérifié vs présumé
 
-| | Verified | Assumed |
+| | Vérifié | Présumé |
 | --- | --- | --- |
-| Object | A local `recu.v0` card signed with ed25519 (`local-v0`) | That money moved, or that this file is money |
-| Rail | The name is one of `x-money \| visa \| interac \| ach \| cash \| autre` | That Visa, Interac, ACH, cash, or X Money settled |
-| X Money | We may write `rail: x-money` | That we operate X Money, that we can patch X, that X paid |
-| Seal | `sceau.suite` is `ed25519` on the card body | A QUANTUM seal, UFHY1, or a mint |
-| Keys | Generated under `keys/`, kept off Git | That FAMILLE holds a wallet or a balance |
-| FAMILLE | Attests | Holds funds |
-| Amount | `montant_cents > 0` on the card | A coin, a mint, or a spendable balance |
+| Objet | Une carte locale `recu.v0` signée avec ed25519 (`local-v0`) | Que l'argent a bougé, ou que ce fichier est de l'argent |
+| Rail | Le nom est l'un de `x-money \| visa \| interac \| ach \| cash \| autre` | Que Visa, Interac, ACH, cash ou X Money a réglé |
+| X Money | On peut écrire `rail: x-money` | Qu'on opère X Money, qu'on peut patcher X, que X a payé |
+| Sceau | `sceau.suite` est `ed25519` sur le corps de la carte | Un sceau QUANTUM, UFHY1, ou un mint |
+| Clés | Générées sous `keys/`, tenues hors Git | Que FAMILLE tient un wallet ou un solde |
+| FAMILLE | Atteste | Tient les fonds |
+| Montant | `montant_cents > 0` sur la carte | Une pièce, un mint, ou un solde dépensable |
 
-A valid seal means the receipt holds. If money moved, it moved elsewhere.
+Un sceau valide veut dire que le reçu tient. Si l'argent a bougé, il a bougé ailleurs.
 
-## How to run
+## Comment lancer
 
-Runtime (ed25519 only — not a quantum stack):
+Runtime (ed25519 seulement — pas une pile quantique) :
 
 ```
 pip install cryptography
@@ -39,11 +39,11 @@ python3 recu.py sceller carte.recu.json
 python3 recu.py juger carte.recu.json
 ```
 
-- `cles` writes `keys/ed25519.sk` and `keys/ed25519.pk`. Note: `not QUANTUM. not a mint. keys off Git.`
-- `ecrire` writes a card. `montant_cents <= 0` is refused. Zero is not a receipt. Unknown rail is denied.
-- `sceller` signs the card body. Suite on the card is local ed25519 v0.
-- `juger` denies an unsealed card (`pas de sceau`) and a broken seal. A valid seal is allowed. The note says money, if it moved, moved elsewhere.
+- `cles` écrit `keys/ed25519.sk` et `keys/ed25519.pk`. Note : `not QUANTUM. not a mint. keys off Git.`
+- `ecrire` écrit une carte. `montant_cents <= 0` est refusé. Zéro n'est pas un reçu. Rail inconnu : deny.
+- `sceller` signe le corps de la carte. Suite sur la carte : ed25519 v0 local.
+- `juger` refuse une carte non scellée (`pas de sceau`) et un sceau brisé. Un sceau valide : allow. La note dit que l'argent, s'il a bougé, a bougé ailleurs.
 
-Tests: `python3 -m unittest test_recu.py -v`
+Tests : `python3 -m unittest test_recu.py -v`
 
-Ritual (meaning unchanged): [INTERDIT.md](INTERDIT.md) · [JUGE.md](JUGE.md)
+Rituel (sens inchangé) : [INTERDIT.md](INTERDIT.md) · [JUGE.md](JUGE.md)

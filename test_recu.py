@@ -30,25 +30,25 @@ def _seal(carte, keys):
 
 class DoorCopy(unittest.TestCase):
     def test_lead_signed_receipt_not_money(self):
-        self.assertIn("A signed receipt. Not money.", README)
+        self.assertIn("Un reçu signé. Pas d'argent.", README)
 
     def test_named_rails_only(self):
         self.assertIn("x-money | visa | interac | ach | cash | autre", README)
 
     def test_x_money_named_not_operated(self):
         self.assertIn("X Money (2026, US Premium, Visa + Cross River FDIC)", README)
-        self.assertIn("We cannot operate it.", README)
-        self.assertIn("We cannot patch X.", README)
+        self.assertIn("On ne l'opère pas.", README)
+        self.assertIn("On ne patche pas X.", README)
 
     def test_attestation_not_balance(self):
-        self.assertIn("Attestation ≠ balance", README)
-        self.assertIn("A sealed card is not a QUANTUM seal", README)
-        self.assertIn("Keys stay off Git", README)
+        self.assertIn("Attestation ≠ solde", README)
+        self.assertIn("Une carte scellée n'est pas un sceau QUANTUM", README)
+        self.assertIn("Les clés restent hors Git", README)
 
     def test_verified_vs_assumed_table(self):
-        self.assertIn("Verified vs assumed", README)
-        self.assertIn("| Verified |", README)
-        self.assertIn("| Assumed |", README)
+        self.assertIn("Vérifié vs présumé", README)
+        self.assertIn("| Vérifié |", README)
+        self.assertIn("| Présumé |", README)
 
     def test_how_to_run_cli(self):
         for line in (
@@ -61,8 +61,30 @@ class DoorCopy(unittest.TestCase):
             self.assertIn(line, README)
 
     def test_famille_does_not_hold_funds(self):
-        self.assertIn("It does not hold funds", README)
-        self.assertIn("FAMILLE attests", README)
+        self.assertIn("Elle ne tient pas les fonds", README)
+        self.assertIn("FAMILLE atteste", README)
+
+    def test_door_prose_is_french_not_english_mix(self):
+        for phrase in (
+            "A signed receipt. Not money.",
+            "We cannot operate it.",
+            "We cannot patch X.",
+            "Verified vs assumed",
+            "How to run",
+            "It does not hold funds",
+            "FAMILLE attests",
+            "Attestation ≠ balance",
+            "Keys stay off Git",
+        ):
+            self.assertNotIn(phrase, README)
+
+    def test_grok_expert_wording_holds(self):
+        self.assertIn("Ce rail est un reçu signé", README)
+        self.assertIn("Une pièce", README)
+        self.assertIn("un wallet ou un solde", README)
+        self.assertNotIn("Cette rail", README)
+        self.assertNotIn("Une coin", README)
+        self.assertNotIn("un balance", README)
 
     def test_no_formally_verified(self):
         self.assertNotIn("formally verified", README.lower())
@@ -208,7 +230,7 @@ class Lock6SealRequired(unittest.TestCase):
 
 class Lock7FamilleDoesNotHoldFunds(unittest.TestCase):
     def test_door_and_ecrire_note(self):
-        self.assertIn("does not hold funds", README)
+        self.assertIn("ne tient pas les fonds", README)
         carte = _card()
         self.assertIn("FAMILLE ne tient pas l'argent", carte["note"])
         self.assertIn("attestation, pas un solde", carte["note"])
@@ -221,8 +243,8 @@ class Lock8NameXMoneyDoNotOperate(unittest.TestCase):
         self.assertEqual(carte["rail"], "x-money")
 
     def test_door_does_not_claim_to_operate_or_patch_x(self):
-        self.assertIn("We cannot operate it.", README)
-        self.assertIn("We cannot patch X.", README)
+        self.assertIn("On ne l'opère pas.", README)
+        self.assertIn("On ne patche pas X.", README)
         self.assertNotIn("we operate X", README.lower())
         self.assertNotIn("patch X Money", README)
 
