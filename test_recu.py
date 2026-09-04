@@ -12,6 +12,8 @@ import recu
 
 ROOT = Path(__file__).resolve().parent
 README = (ROOT / "README.md").read_text(encoding="utf-8")
+INTERDIT = (ROOT / "INTERDIT.md").read_text(encoding="utf-8")
+PREVIEW = (ROOT / "PREVIEW.md").read_text(encoding="utf-8")
 RECUPY = (ROOT / "recu.py").read_text(encoding="utf-8")
 MONEY_FIELDS = ("balance", "wallet", "mint")
 INVENTED = ("quantum coin", "quantum money")
@@ -45,10 +47,19 @@ class DoorCopy(unittest.TestCase):
         self.assertIn("Une carte scellée n'est pas un sceau QUANTUM", README)
         self.assertIn("Les clés restent hors Git", README)
 
+    def test_preview_is_not_sealed_quittance(self):
+        phrase = "Preview / aperçu ≠ quittance / reçu scellé"
+        self.assertIn(phrase, README)
+        self.assertIn(phrase, INTERDIT)
+        self.assertIn(phrase, PREVIEW)
+        self.assertIn("Présenter un Preview / aperçu comme une quittance / un reçu scellé", INTERDIT)
+
     def test_verified_vs_assumed_table(self):
         self.assertIn("Vérifié vs présumé", README)
         self.assertIn("| Vérifié |", README)
         self.assertIn("| Présumé |", README)
+        self.assertIn("Un aperçu (`PREVIEW.md`) : lecture seule, pas d'émission", README)
+        self.assertIn("Qu'un aperçu soit une quittance ou un reçu scellé", README)
 
     def test_how_to_run_cli(self):
         for line in (

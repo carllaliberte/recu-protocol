@@ -8,7 +8,7 @@ Rails nommés seulement : `x-money | visa | interac | ach | cash | autre`.
 
 X Money (2026, US Premium, Visa + Cross River FDIC) est un rail qu'on peut *nommer*. On ne l'opère pas. On ne patche pas X.
 
-Attestation ≠ solde. Une carte scellée n'est pas un sceau QUANTUM. Les clés restent hors Git.
+Attestation ≠ solde. Preview / aperçu ≠ quittance / reçu scellé. Une carte scellée n'est pas un sceau QUANTUM. Les clés restent hors Git.
 
 ## Vérifié vs présumé
 
@@ -21,6 +21,7 @@ Attestation ≠ solde. Une carte scellée n'est pas un sceau QUANTUM. Les clés 
 | Clés | Générées sous `keys/`, tenues hors Git | Que FAMILLE tient un wallet ou un solde |
 | FAMILLE | Atteste | Tient les fonds |
 | Montant | `montant_cents > 0` sur la carte | Une pièce, un mint, ou un solde dépensable |
+| Preview | Un aperçu (`PREVIEW.md`) : lecture seule, pas d'émission | Qu'un aperçu soit une quittance ou un reçu scellé |
 
 Un sceau valide veut dire que le reçu tient. Si l'argent a bougé, il a bougé ailleurs.
 
@@ -46,4 +47,4 @@ python3 recu.py juger carte.recu.json
 
 Tests : `python3 -m unittest test_recu.py -v`
 
-Rituel (sens inchangé) : [INTERDIT.md](INTERDIT.md) · [JUGE.md](JUGE.md)
+Rituel : [INTERDIT.md](INTERDIT.md) · [JUGE.md](JUGE.md) · [PREVIEW.md](PREVIEW.md)
