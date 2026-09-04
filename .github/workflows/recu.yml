@@ -1,0 +1,19 @@
+name: recu
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # runtime dep for local ed25519 — not a quantum stack
+      - name: Install cryptography (runtime only)
+        run: python3 -m pip install "cryptography==41.0.7"
+      - name: Unittest
+        run: python3 -m unittest test_recu.py -v
