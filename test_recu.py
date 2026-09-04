@@ -78,6 +78,14 @@ class DoorCopy(unittest.TestCase):
         ):
             self.assertNotIn(phrase, README)
 
+    def test_grok_expert_wording_holds(self):
+        self.assertIn("Ce rail est un reçu signé", README)
+        self.assertIn("Une pièce", README)
+        self.assertIn("un wallet ou un solde", README)
+        self.assertNotIn("Cette rail", README)
+        self.assertNotIn("Une coin", README)
+        self.assertNotIn("un balance", README)
+
     def test_no_formally_verified(self):
         self.assertNotIn("formally verified", README.lower())
         self.assertNotIn("formally verified", RECUPY.lower())

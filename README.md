@@ -2,7 +2,7 @@
 
 Un reçu signé. Pas d'argent.
 
-Cette rail est un reçu signé. Pas d'argent. Pas de quantum coin. FAMILLE atteste. Elle ne tient pas les fonds.
+Ce rail est un reçu signé. Pas d'argent. Pas de quantum coin. FAMILLE atteste. Elle ne tient pas les fonds.
 
 Rails nommés seulement : `x-money | visa | interac | ach | cash | autre`.
 
@@ -18,9 +18,9 @@ Attestation ≠ solde. Une carte scellée n'est pas un sceau QUANTUM. Les clés 
 | Rail | Le nom est l'un de `x-money \| visa \| interac \| ach \| cash \| autre` | Que Visa, Interac, ACH, cash ou X Money a réglé |
 | X Money | On peut écrire `rail: x-money` | Qu'on opère X Money, qu'on peut patcher X, que X a payé |
 | Sceau | `sceau.suite` est `ed25519` sur le corps de la carte | Un sceau QUANTUM, UFHY1, ou un mint |
-| Clés | Générées sous `keys/`, tenues hors Git | Que FAMILLE tient un wallet ou un balance |
+| Clés | Générées sous `keys/`, tenues hors Git | Que FAMILLE tient un wallet ou un solde |
 | FAMILLE | Atteste | Tient les fonds |
-| Montant | `montant_cents > 0` sur la carte | Une coin, un mint, ou un solde dépensable |
+| Montant | `montant_cents > 0` sur la carte | Une pièce, un mint, ou un solde dépensable |
 
 Un sceau valide veut dire que le reçu tient. Si l'argent a bougé, il a bougé ailleurs.
 
