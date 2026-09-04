@@ -105,8 +105,18 @@ class DoorCopy(unittest.TestCase):
         blob = (README + RECUPY).lower()
         self.assertNotIn("grok imagine", blob)
 
-    def test_no_license_file_added(self):
-        self.assertFalse((ROOT / "LICENSE").exists())
+    def test_mit_license_and_copyright_couche(self):
+        license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
+        self.assertTrue(license_text.startswith("MIT License"))
+        self.assertIn("Copyright (c) 2026 Carl Laliberté", license_text)
+        self.assertIn("Permission is hereby granted, free of charge", license_text)
+        copyright_md = (ROOT / "COPYRIGHT.md").read_text(encoding="utf-8")
+        self.assertIn("Copyright (c) 2026 Carl Laliberté, Québec", copyright_md)
+        self.assertIn("Pas de co-auteurs", copyright_md)
+        self.assertIn(
+            "ne couvre pas les marques Visa, Interac ou X Money, ni QUANTUM",
+            README,
+        )
 
 
 class Lock1ReceiptIsNotMoney(unittest.TestCase):
