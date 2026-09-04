@@ -48,3 +48,11 @@ python3 recu.py juger carte.recu.json
 Tests : `python3 -m unittest test_recu.py -v`
 
 Rituel : [INTERDIT.md](INTERDIT.md) · [JUGE.md](JUGE.md) · [PREVIEW.md](PREVIEW.md)
+
+## Licence
+
+MIT — [LICENSE](LICENSE) · [COPYRIGHT.md](COPYRIGHT.md).
+Copyright (c) 2026 Carl Laliberté, Québec. Pas de co-auteurs.
+
+La licence MIT de ce dépôt ne couvre pas les marques Visa, Interac ou X Money, ni QUANTUM.
+
