@@ -5,5 +5,8 @@
 3. Un rail non nommé.
 4. Écrire « X Money a payé » sans `ref_externe`.
 5. Présenter un reçu local-v0 comme un acte QUANTUM.
+6. Présenter un Preview / aperçu comme une quittance / un reçu scellé.
+
+Preview / aperçu ≠ quittance / reçu scellé.
 
 Le dollar circule ailleurs. Ici, seulement l'attestation.
