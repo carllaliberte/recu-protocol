@@ -1,0 +1,6 @@
+Ville preview — securite
+Triggered by famille PR #97 merge.
+PREVIEW ≠ quittance / reçu scellé.
+Tests + scan. Pas « zéro faille ».
+Unforge does not sign.
+Carl merge. NE MERGE PAS auto.
