@@ -1,0 +1,4 @@
+Ville preview — lock
+Triggered by famille PR #82 merge.
+PREVIEW ≠ quittance.
+Carl merge. NE MERGE PAS auto.
