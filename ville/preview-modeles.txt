@@ -1,0 +1,7 @@
+Ville preview — modeles
+Linked from famille PR #111 merge (flux: toutes les autres, tous les modeles).
+MODELES.md: toutes familles / tous modeles eligibles.
+Lecture = PRESENT. Pas de plugin.
+PREVIEW != quittance UNFORGE.
+Unforge does not sign.
+Carl merge. NE MERGE PAS.
